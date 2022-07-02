@@ -20,6 +20,7 @@ Identificar top 4 competidores, según porcentaje de catálogo coincidente con d
 |    3    |    Walmart.com   |    234    |              24%              |
 |    4    |   Beach Camera   |     70    |               7%              |
 
+*Solución:*
 ```SQL
 SELECT
     Competidor, -- Nombre del competidor
@@ -52,6 +53,7 @@ Identificar top 5 categorías, según porcentaje de reviews.</p>
 |    **5**    |  home_entretainment  |         81         |            8%            |        11086       |             5%             |
 |    **6**    |   music_instruments  |         12         |            1%            |        1713        |             1%             |
 
+*Solución:*
 ```SQL
 SELECT
     RANK() OVER (ORDER BY Share_in_total_reviews DESC) AS Ranking, -- Enumerador de filas
@@ -88,6 +90,7 @@ Nota: entendemos un cliente nuevo aquel que ha sido captado en 2011, es decir, q
 | 11      |   2011   |        11 |               1712 |             1237 |                   475 |                 0.72 |
 | 12      |   2011   |        12 |                687 |              426 |                   261 |                 0.62 |
 
+*Solución:*
 ```SQL
 SELECT
 	j.Row_ AS Row, -- Enumerador de filas
