@@ -61,10 +61,10 @@ SELECT
     COUNT(p.asin) AS Count_of_ASINs, -- Número de ASINs
     CONCAT(ROUND(COUNT(p.asin) * 100 / (SELECT COUNT(c.asin) FROM product_data_v1 c)), "%") AS Share_in_total_ASINs, -- Porcentaje de ASINs en total
     SUM(p.number_of_reviews) AS SUM_of_reviews, -- Suma de reviews
-    CONCAT(ROUND(COUNT(p.number_of_reviews) * 100 / (SELECT COUNT(a.number_of_reviews) FROM product_data_v1 a)), "%") AS Share_in_total_reviews -- Porcentaje de reviews en total
+    CONCAT(ROUND(SUM(p.number_of_reviews) * 100 / (SELECT SUM(a.number_of_reviews) FROM product_data_v1 a)), "%") AS Share_in_total_reviews -- Porcentaje de reviews en total
 FROM product_data_v1 p
 GROUP BY Product_Category
-ORDER BY Share_in_total_reviews DESC
+ORDER BY Sum_of_reviews DESC
 LIMIT 5;
 ```
 
